@@ -66,14 +66,39 @@ svg.append("g")
     .style("text-anchor", "end")
     .text("Alder");
 
-// Add the lines
+// Add the lines and tooltips
+const tooltip = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
 data.forEach(d => {
     svg.append("line")
         .attr("class", "line")
         .attr("x1", x(d.startYear))
         .attr("y1", y(d.startAge))
         .attr("x2", x(d.endYear))
-        .attr("y2", y(d.endAge));
+        .attr("y2", y(d.endAge))
+        .on("mouseover", function(event) {
+            tooltip.transition()
+                .duration(200)
+                .style("opacity", .9);
+            tooltip.html(`Start: ${d.startAge}<br>Slutt: ${d.endAge}`)
+                .style("left", (event.pageX + 5) + "px")
+                .style("top", (event.pageY - 28) + "px");
+        })
+        .on("mouseout", function() {
+            tooltip.transition()
+                .duration(500)
+                .style("opacity", 0);
+        });
+
+    svg.append("text")
+        .attr("x", x(d.endYear) + 5)
+        .attr("y", y(d.endAge))
+        .attr("dy", ".35em")
+        .text(d.name)
+        .style("font-size", "10px")
+        .style("fill", "#8b0000");
 });
 
 // Add the points
@@ -82,11 +107,11 @@ data.forEach(d => {
         .attr("cx", x(d.startYear))
         .attr("cy", y(d.startAge))
         .attr("r", 3)
-        .attr("fill", "steelblue");
+        .attr("fill", "#8b0000");
 
     svg.append("circle")
         .attr("cx", x(d.endYear))
         .attr("cy", y(d.endAge))
         .attr("r", 3)
-        .attr("fill", "steelblue");
+        .attr("fill", "#8b0000");
 });

@@ -82,9 +82,15 @@ data.forEach(d => {
             tooltip.transition()
                 .duration(200)
                 .style("opacity", .9);
-            tooltip.html(`${d.name} styrte Arbeiderpartiet fra ${d.startYear} til ${d.endYear}, alderen ${d.startAge}-${d.endAge}`)
-                .style("left", (event.pageX + 5) + "px")
-                .style("top", (event.pageY - 28) + "px");
+            if (d.name === "Jonas Gahr Støre") {
+                tooltip.html(`${d.name} styrte Arbeiderpartiet fra ${d.startYear} og leier partiet framleis, han var ${d.startAge} då han starta, og er no ${d.endAge}`)
+                    .style("left", (event.pageX + 5) + "px")
+                    .style("top", (event.pageY - 28) + "px");
+            } else {
+                tooltip.html(`${d.name} styrte Arbeiderpartiet fra ${d.startYear} til ${d.endYear}, alderen ${d.startAge}-${d.endAge}`)
+                    .style("left", (event.pageX + 5) + "px")
+                    .style("top", (event.pageY - 28) + "px");
+            }
         })
         .on("mouseout", function() {
             tooltip.transition()

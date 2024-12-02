@@ -47,7 +47,7 @@ const data = [
     {name: "Kjell Magne Bondevik", party: "KrF", startYear: 1997, endYear: 2000, startAge: 60, endAge: 63},
     {name: "Jens Stoltenberg", party: "Ap", startYear: 2000, endYear: 2001, startAge: 41, endAge: 42},
     {name: "Kjell Magne Bondevik", party: "KrF", startYear: 2001, endYear: 2005, startAge: 63, endAge: 67},
-    {name: "Jens Stoltenberg", party: "Ap", startYear: 2005, endYear: 2013, startAge: 46,},
+    {name: "Jens Stoltenberg", party: "Ap", startYear: 2005, endYear: 2013, startAge: 46, endAge: 54},
     {name: "Erna Solberg", party: "H", startYear: 2013, endYear: 2021, startAge: 52, endAge: 60},
     {name: "Jonas Gahr Støre", party: "Ap", startYear: 2021, endYear: 2023, startAge: 61, endAge: 63}
 ];

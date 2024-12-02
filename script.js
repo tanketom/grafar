@@ -37,7 +37,7 @@ const svg = d3.select("svg")
 
 // Set up the scales
 const x = d3.scaleLinear()
-    .domain([1887, 2023])
+    .domain([1880, 2030])
     .range([0, width]);
 
 const y = d3.scaleLinear()
@@ -104,7 +104,7 @@ data.forEach(d => {
         .attr("dy", ".35em")
         .text(d.name)
         .style("font-size", "10px")
-        .style("fill", "#8b0000");
+        .style("fill", "black");
 });
 
 // Add the points

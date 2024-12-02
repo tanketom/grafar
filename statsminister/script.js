@@ -1,6 +1,6 @@
 import numpy as np
 
-# Data for the table
+// Data for the table
 data = [
     {name: "Fredrik Stang", "startYear": 1873, "endYear": 1880, "startAge": 65, "endAge": 72},
     {name: "Christian Selmer", "startYear": 1880, "endYear": 1884, "startAge": 64, "endAge": 68},

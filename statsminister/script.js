@@ -1,55 +1,53 @@
-import numpy as np
-
 // Data for the table
-data = [
-    {name: "Fredrik Stang", "startYear": 1873, "endYear": 1880, "startAge": 65, "endAge": 72},
-    {name: "Christian Selmer", "startYear": 1880, "endYear": 1884, "startAge": 64, "endAge": 68},
-    {name: "Johan Sverdrup", "startYear": 1884, "endYear": 1889, "startAge": 68, "endAge": 73},
-    {name: "Emil Stang", "startYear": 1889, "endYear": 1891, "startAge": 55, "endAge": 57},
-    {name: "Johannes Steen", "startYear": 1891, "endYear": 1893, "startAge": 64, "endAge": 66},
-    {name: "Emil Stang", "startYear": 1893, "endYear": 1895, "startAge": 59, "endAge": 61},
-    {name: "Francis Hagerup", "startYear": 1895, "endYear": 1898, "startAge": 42, "endAge": 45},
-    {name: "Johannes Steen", "startYear": 1898, "endYear": 1902, "startAge": 71, "endAge": 75},
-    {name: "Otto Blehr", "startYear": 1902, "endYear": 1903, "startAge": 55, "endAge": 56},
-    {name: "Francis Hagerup", "startYear": 1903, "endYear": 1905, "startAge": 50, "endAge": 52},
-    {name: "Christian Michelsen", "startYear": 1905, "endYear": 1907, "startAge": 48, "endAge": 50},
-    {name: "Jørgen Løvland", "startYear": 1907, "endYear": 1908, "startAge": 69, "endAge": 70},
-    {name: "Gunnar Knudsen", "startYear": 1908, "endYear": 1910, "startAge": 60, "endAge": 62},
-    {name: "Wollert Konow", "startYear": 1910, "endYear": 1912, "startAge": 65, "endAge": 67},
-    {name: "Jens Bratlie", "startYear": 1912, "endYear": 1913, "startAge": 56, "endAge": 57},
-    {name: "Gunnar Knudsen", "startYear": 1913, "endYear": 1920, "startAge": 65, "endAge": 72},
-    {name: "Otto B. Halvorsen", "startYear": 1920, "endYear": 1921, "startAge": 48, "endAge": 49},
-    {name: "Otto Blehr", "startYear": 1921, "endYear": 1923, "startAge": 74, "endAge": 76},
-    {name: "Otto B. Halvorsen", "startYear": 1923, "endYear": 1923, "startAge": 51, "endAge": 51},
-    {name: "Abraham Berge", "startYear": 1923, "endYear": 1924, "startAge": 72, "endAge": 73},
-    {name: "Johan Ludwig Mowinckel", "startYear": 1924, "endYear": 1926, "startAge": 54, "endAge": 56},
-    {name: "Ivar Lykke", "startYear": 1926, "endYear": 1928, "startAge": 54, "endAge": 56},
-    {name: "Christopher Hornsrud", "startYear": 1928, "endYear": 1928, "startAge": 69, "endAge": 69},
-    {name: "Johan Ludwig Mowinckel", "startYear": 1928, "endYear": 1931, "startAge": 58, "endAge": 61},
-    {name: "Peder Kolstad", "startYear": 1931, "endYear": 1932, "startAge": 53, "endAge": 54},
-    {name: "Jens Hundseid", "startYear": 1932, "endYear": 1933, "startAge": 49, "endAge": 50},
-    {name: "Johan Ludwig Mowinckel", "startYear": 1933, "endYear": 1935, "startAge": 63, "endAge": 65},
-    {name: "Johan Nygaardsvold", "startYear": 1935, "endYear": 1945, "startAge": 56, "endAge": 66},
-    {name: "Einar Gerhardsen", "startYear": 1945, "endYear": 1951, "startAge": 48, "endAge": 54},
-    {name: "Oscar Torp", "startYear": 1951, "endYear": 1955, "startAge": 56, "endAge": 60},
-    {name: "Einar Gerhardsen", "startYear": 1955, "endYear": 1963, "startAge": 60, "endAge": 68},
-    {name: "John Lyng", "startYear": 1963, "endYear": 1963, "startAge": 55, "endAge": 55},
-    {name: "Einar Gerhardsen", "startYear": 1963, "endYear": 1965, "startAge": 68, "endAge": 70},
-    {name: "Per Borten", "startYear": 1965, "endYear": 1971, "startAge": 51, "endAge": 57},
-    {name: "Trygve Bratteli", "startYear": 1971, "endYear": 1972, "startAge": 60, "endAge": 61},
-    {name: "Lars Korvald", "startYear": 1972, "endYear": 1973, "startAge": 55, "endAge": 56},
-    {name: "Trygve Bratteli", "startYear": 1973, "endYear": 1976, "startAge": 62, "endAge": 65},
-    {name: "Odvar Nordli", "startYear": 1976, "endYear": 1981, "startAge": 49, "endAge": 54},
-    {name: "Gro Harlem Brundtland", "startYear": 1981, "endYear": 1981, "startAge": 42, "endAge": 42},
-    {name: "Kåre Willoch", "startYear": 1981, "endYear": 1986, "startAge": 53, "endAge": 58},
-    {name: "Gro Harlem Brundtland", "startYear": 1986, "endYear": 1989, "startAge": 47, "endAge": 50},
-    {name: "Jan P. Syse", "startYear": 1989, "endYear": 1990, "startAge": 58, "endAge": 59},
-    {name: "Gro Harlem Brundtland", "startYear": 1990, "endYear": 1996, "startAge": 51, "endAge": 57},
-    {name: "Thorbjørn Jagland", "startYear": 1996, "endYear": 1997, "startAge": 46, "endAge": 47},
-    {name: "Kjell Magne Bondevik", "startYear": 1997, "endYear": 2000, "startAge": 60, "endAge": 63},
-    {name: "Jens Stoltenberg", "startYear": 2000, "endYear": 2001, "startAge": 41, "endAge": 42},
-    {name: "Kjell Magne Bondevik", "startYear": 2001, "endYear": 2005, "startAge": 63, "endAge": 67},
-    {name: "Jens Stoltenberg", startYear: 2005, endYear: 2013, startAge: 46, endAge: 54},
+const data = [
+    {name: "Fredrik Stang", party: "H", startYear: 1873, endYear: 1880, startAge: 65, endAge: 72},
+    {name: "Christian Selmer", party: "H", startYear: 1880, endYear: 1884, startAge: 64, endAge: 68},
+    {name: "Johan Sverdrup", party: "V", startYear: 1884, endYear: 1889, startAge: 68, endAge: 73},
+    {name: "Emil Stang", party: "H", startYear: 1889, endYear: 1891, startAge: 55, endAge: 57},
+    {name: "Johannes Steen", party: "V", startYear: 1891, endYear: 1893, startAge: 64, endAge: 66},
+    {name: "Emil Stang", party: "H", startYear: 1893, endYear: 1895, startAge: 59, endAge: 61},
+    {name: "Francis Hagerup", party: "H", startYear: 1895, endYear: 1898, startAge: 42, endAge: 45},
+    {name: "Johannes Steen", party: "V", startYear: 1898, endYear: 1902, startAge: 71, endAge: 75},
+    {name: "Otto Blehr", party: "V", startYear: 1902, endYear: 1903, startAge: 55, endAge: 56},
+    {name: "Francis Hagerup", party: "H", startYear: 1903, endYear: 1905, startAge: 50, endAge: 52},
+    {name: "Christian Michelsen", party: "Saml.", startYear: 1905, endYear: 1907, startAge: 48, endAge: 50},
+    {name: "Jørgen Løvland", party: "V", startYear: 1907, endYear: 1908, startAge: 69, endAge: 70},
+    {name: "Gunnar Knudsen", party: "V", startYear: 1908, endYear: 1910, startAge: 60, endAge: 62},
+    {name: "Wollert Konow", party: "FV", startYear: 1910, endYear: 1912, startAge: 65, endAge: 67},
+    {name: "Jens Bratlie", party: "H", startYear: 1912, endYear: 1913, startAge: 56, endAge: 57},
+    {name: "Gunnar Knudsen", party: "V", startYear: 1913, endYear: 1920, startAge: 65, endAge: 72},
+    {name: "Otto B. Halvorsen", party: "H", startYear: 1920, endYear: 1921, startAge: 48, endAge: 49},
+    {name: "Otto Blehr", party: "V", startYear: 1921, endYear: 1923, startAge: 74, endAge: 76},
+    {name: "Otto B. Halvorsen", party: "H", startYear: 1923, endYear: 1923, startAge: 51, endAge: 51},
+    {name: "Abraham Berge", party: "FV", startYear: 1923, endYear: 1924, startAge: 72, endAge: 73},
+    {name: "Johan Ludwig Mowinckel", party: "V", startYear: 1924, endYear: 1926, startAge: 54, endAge: 56},
+    {name: "Ivar Lykke", party: "H", startYear: 1926, endYear: 1928, startAge: 54, endAge: 56},
+    {name: "Christopher Hornsrud", party: "Ap", startYear: 1928, endYear: 1928, startAge: 69, endAge: 69},
+    {name: "Johan Ludwig Mowinckel", party: "V", startYear: 1928, endYear: 1931, startAge: 58, endAge: 61},
+    {name: "Peder Kolstad", party: "B", startYear: 1931, endYear: 1932, startAge: 53, endAge: 54},
+    {name: "Jens Hundseid", party: "B", startYear: 1932, endYear: 1933, startAge: 49, endAge: 50},
+    {name: "Johan Ludwig Mowinckel", party: "V", startYear: 1933, endYear: 1935, startAge: 63, endAge: 65},
+    {name: "Johan Nygaardsvold", party: "Ap", startYear: 1935, endYear: 1945, startAge: 56, endAge: 66},
+    {name: "Einar Gerhardsen", party: "Ap", startYear: 1945, endYear: 1951, startAge: 48, endAge: 54},
+    {name: "Oscar Torp", party: "Ap", startYear: 1951, endYear: 1955, startAge: 56, endAge: 60},
+    {name: "Einar Gerhardsen", party: "Ap", startYear: 1955, endYear: 1963, startAge: 60, endAge: 68},
+    {name: "John Lyng", party: "H", startYear: 1963, endYear: 1963, startAge: 55, endAge: 55},
+    {name: "Einar Gerhardsen", party: "Ap", startYear: 1963, endYear: 1965, startAge: 68, endAge: 70},
+    {name: "Per Borten", party: "Sp", startYear: 1965, endYear: 1971, startAge: 51, endAge: 57},
+    {name: "Trygve Bratteli", party: "Ap", startYear: 1971, endYear: 1972, startAge: 60, endAge: 61},
+    {name: "Lars Korvald", party: "KrF", startYear: 1972, endYear: 1973, startAge: 55, endAge: 56},
+    {name: "Trygve Bratteli", party: "Ap", startYear: 1973, endYear: 1976, startAge: 62, endAge: 65},
+    {name: "Odvar Nordli", party: "Ap", startYear: 1976, endYear: 1981, startAge: 49, endAge: 54},
+    {name: "Gro Harlem Brundtland", party: "Ap", startYear: 1981, endYear: 1981, startAge: 42, endAge: 42},
+    {name: "Kåre Willoch", party: "H", startYear: 1981, endYear: 1986, startAge: 53, endAge: 58},
+    {name: "Gro Harlem Brundtland", party: "Ap", startYear: 1986, endYear: 1989, startAge: 47, endAge: 50},
+    {name: "Jan P. Syse", party: "H", startYear: 1989, endYear: 1990, startAge: 58, endAge: 59},
+    {name: "Gro Harlem Brundtland", party: "Ap", startYear: 1990, endYear: 1996, startAge: 51, endAge: 57},
+    {name: "Thorbjørn Jagland", party: "Ap", startYear: 1996, endYear: 1997, startAge: 46, endAge: 47},
+    {name: "Kjell Magne Bondevik", party: "KrF", startYear: 1997, endYear: 2000, startAge: 60, endAge: 63},
+    {name: "Jens Stoltenberg", party: "Ap", startYear: 2000, endYear: 2001, startAge: 41, endAge: 42},
+    {name: "Kjell Magne Bondevik", party: "KrF", startYear: 2001, endYear: 2005, startAge: 63, endAge: 67},
+    {name: "Jens Stoltenberg", party: "Ap", startYear: 2005, endYear: 2013, startAge: 46,},
     {name: "Erna Solberg", party: "H", startYear: 2013, endYear: 2021, startAge: 52, endAge: 60},
     {name: "Jonas Gahr Støre", party: "Ap", startYear: 2021, endYear: 2023, startAge: 61, endAge: 63}
 ];
@@ -158,36 +156,3 @@ data.forEach(d => {
         .attr("r", 3)
         .attr("fill", partyColors[d.party]);
 });
-
-// Calculate the average age for each prime minister and store in a list
-const averageAges = data.map(d => (d.startAge + d.endAge) / 2);
-const years = data.map(d => d.startYear);
-
-// Fit a linear regression model to the data
-const coefficients = linearRegression(years, averageAges);
-const trendline = years.map(year => coefficients[0] * year + coefficients[1]);
-
-// Add the trendline to the graph
-svg.append("path")
-    .datum(years.map((year, i) => ({year, age: trendline[i]})))
-    .attr("fill", "none")
-    .attr("stroke", "blue")
-    .attr("stroke-width", 2)
-    .attr("d", d3.line()
-        .x(d => x(d.year))
-        .y(d => y(d.age))
-    );
-
-// Linear regression function
-function linearRegression(x, y) {
-    const n = x.length;
-    const sumX = x.reduce((a, b) => a + b, 0);
-    const sumY = y.reduce((a, b) => a + b, 0);
-    const sumXY = x.reduce((sum, xi, i) => sum + xi * y[i], 0);
-    const sumXX = x.reduce((sum, xi) => sum + xi * xi, 0);
-
-    const slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
-    const intercept = (sumY - slope * sumX) / n;
-
-    return [slope, intercept];
-}

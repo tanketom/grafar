@@ -121,3 +121,55 @@ data.forEach(d => {
         .attr("r", 3)
         .attr("fill", "#8b0000");
 });
+
+// Calculate the average age for each partileader and store in a list
+const averageAges = data.map(d => (d.startAge + d.endAge) / 2);
+const years = data.map(d => d.startYear);
+
+// Fit a linear regression model to the data
+const coefficients = linearRegression(years, averageAges);
+const trendline = years.map(year => coefficients[0] * year + coefficients[1]);
+
+// Add the trendline to the graph
+svg.append("path")
+    .datum(years.map((year, i) => ({year, age: trendline[i]})))
+    .attr("fill", "none")
+    .attr("stroke", "blue")
+    .attr("stroke-width", 2)
+    .attr("d", d3.line()
+        .x(d => x(d.year))
+        .y(d => y(d.age))
+    );
+
+// Linear regression function
+function linearRegression(x, y) {
+    const n = x.length;
+    const sumX = x.reduce((a, b) => a + b, 0);
+    const sumY = y.reduce((a, b) => a + b, 0);
+    const sumXY = x.reduce((sum, xi, i) => sum + xi * y[i], 0);
+    const sumXX = x.reduce((sum, xi) => sum + xi * xi, 0);
+
+    const slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
+    const intercept = (sumY - slope * sumX) / n;
+
+    return [slope, intercept];
+}
+
+// Calculate the average age for each partileader and store in a list
+const averageAges = data.map(d => (d.startAge + d.endAge) / 2);
+const years = data.map(d => d.startYear);
+
+// Fit a linear regression model to the data
+const coefficients = linearRegression(years, averageAges);
+const trendline = years.map(year => coefficients[0] * year + coefficients[1]);
+
+// Add the trendline to the graph
+svg.append("path")
+    .datum(years.map((year, i) => ({year, age: trendline[i]})))
+    .attr("fill", "none")
+    .attr("stroke", "blue")
+    .attr("stroke-width", 2)
+    .attr("d", d3.line()
+        .x(d => x(d.year))
+        .y(d => y(d.age))
+    );

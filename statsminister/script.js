@@ -28,7 +28,7 @@ const svg = d3.select("svg")
 
 // Set up the scales
 const x = d3.scaleLinear()
-    .domain([1945, 2023])
+    .domain([1860, 2030])
     .range([0, width]);
 
 const y = d3.scaleLinear()
